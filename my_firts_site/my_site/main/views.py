@@ -8,11 +8,11 @@ import pytz
 
 def index(request):
     elems = AlbumElem.objects.all().order_by('-id')
-    return render(request, 'main/index.html', {'album_elem_list': elems})
+    return render(request, 'main/index.html', {'album_elem_list': elems, 'title': 'Главная'})
 
 
 def about(request):
-    return render(request, 'main/about.html')
+    return render(request, 'main/about.html', {'title': 'Справка'})
 
 
 def archive(request, year):
