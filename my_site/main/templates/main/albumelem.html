@@ -1,0 +1,21 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+<div class="col">
+  <div class="card flex-md-row mb-4 box-shadow h-md-337">
+    <div class="card-body d-flex flex-column align-items-start">
+      <h3 class="mb-0">
+        {{album_elem.title}}
+      </h3>
+      <div class="mb-1 text-muted">{{album_elem.time_of_creation}}</div>
+      <p class="card-text mb-auto">{{album_elem.content}}</p>
+    </div>
+    {% if album_elem.photo %}
+        <img class="card-img-right d-flex d-md-block"
+             alt="Can't show image :("
+             style="height: 300px; width: 337; display: block; object-fit: cover;"
+             src="{{album_elem.photo.url}}">
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

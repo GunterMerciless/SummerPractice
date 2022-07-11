@@ -1,0 +1,22 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block style %}
+<link rel="stylesheet" type="text/css" href="{% static 'main/css/styles.css' %}">
+{% endblock %}
+
+{% block content %}
+<form class="form-signin" action="" method="post">
+  <div class="text-center">
+    <img class="mb-4" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+    <h1 class="h3 mb-3 font-weight-normal">Войти в мой аккаунт</h1>
+  </div>
+
+  {% csrf_token %}
+  {{ form }}
+
+  <p class="mb-3 text-muted">Нет аккаунта? - <a href="{% url 'reg' %}">Зарегистрироваться</a></p>
+  <button class="btn btn-lg btn-primary btn-block" type="submit">Войти</button>
+</form>
+{% endblock %}
+
