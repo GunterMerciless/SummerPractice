@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.contrib.auth import authenticate,login,logout
+from django.contrib.auth import authenticate, login, logout
 from .forms import *
 from django.http import HttpResponse
 
@@ -8,7 +8,26 @@ from .models import *
 
 def index(request):
     elems = AlbumElem.objects.all().order_by('-id')
+    if request.method == 'POST':
+        for elem in elems:
+            button = 'fav{0}'.format(elem.pk)
+            if button in request.POST.keys():
+                elem.bookmark.add(request.user)
+    else:
+        print('Tried to register: May be method is not POST?')
     return render(request, 'main/index.html', {'album_elem_list': elems, 'title': 'Главная'})
+
+
+def favorites(request):
+    elems = AlbumElem.objects.filter(bookmark__username=request.user.username).order_by('-id')
+    if request.method == 'POST':
+        for elem in elems:
+            button = 'fav{0}'.format(elem.pk)
+            if button in request.POST.keys():
+                elem.bookmark.remove(request.user)
+    else:
+        print('Tried to register: May be method is not POST?')
+    return render(request, 'main/favorites.html', {'album_elem_list': elems, 'title': 'Избранное'})
 
 
 def about(request):
@@ -27,8 +46,8 @@ def registration(request):
     if request.method == 'POST':
         form = UserAddForm(request.POST)
         if form.is_valid():
-                form.save()
-                return redirect('login')
+            form.save()
+            return redirect('login')
     else:
         print('Tried to register: May be method is not POST?')
         form = UserAddForm()

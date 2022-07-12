@@ -2,83 +2,122 @@
 
 {% load static%}
 <html lang="ru">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <meta name="description" content="">
-        <meta name="author" content="">
 
-        <title>{{title}}</title>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
 
-        <link rel="shortcut icon" href="{% static 'main/icons/logo.ico' %}">
+  <title>{{title}}</title>
 
-        <!-- Custom styles for this template -->
-        <link type="text/css" href="{% static 'main/css/styles.css' %}" rel="stylesheet">
-        
+  <link rel="shortcut icon" href="{% static 'main/icons/logo.ico' %}">
 
-        <!-- Google Fonts -->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto+Condensed">
-        
-        <!-- Bootstrap Font Icon CSS -->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
+  <!-- Custom styles for this template -->
+  <link type="text/css" href="{% static 'main/css/styles.css' %}" rel="stylesheet">
 
-        <!-- Bootstrap core CSS -->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
-              integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-              crossorigin="anonymous">
-        
-        {% block style %}
-        {% endblock %}
+  <!-- Google Fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto+Condensed">
 
-    </head>
+  <!-- Bootstrap Font Icon CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
 
-    <body>
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-
-              <nav class="navbar navbar-expand-xl">
-                <div class="container-fluid">
-                <a class="navbar-brand" href="{% url 'home' %}">
-                  <img src="{% static 'main/icons/logo.png' %}" alt="Logo" tittle="Logo"> Отдых и точка </a>
-                
-
-                  <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav mr-auto" >
-
-                        <li class="nav-item"> 
-                            <form class="form-inline mr-auto mr-sl-2 mr-xs-none">
-                            <div class="form-group">
-                              <div class="input-group">
-                                <div class="input-group-prepend">
-                                  <span class="input-group-text" id="basic-addon1"> <i class="bi bi-search"></i> </span>
-                                </div>
-                            <input class="form-control mr-sm-2" type="search" placeholder="Поиск" aria-label="Поиск"> 
-                          </div>
-                          </div>
-                        </form>
-                        <li class="nav-item"> <button class="btn btn-light" type="submit"> Субъекты </button> 
-                    <li class="nav-item"> <button class="btn btn-light" type="submit"> Избраннное </button>
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" 
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     
-                    </ul>
-                    </div>
+  <!-- Popper.js --> 
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" 
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  
+  <!-- Bootstrap Java -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" 
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  
+  {% block style %}
+  {% endblock %}
 
-                        <form class="form-inline ml-auto">
-                        <div class="form-group">
-                        <span class="input-group-text" id="basic-addon1"> <i class="bi bi-person-fill"></i> </span>
-                        {% if request.user.is_authenticated %}
-                        <a class="btn btn-outline-secondary" href="{% url 'logout' %}">Выйти</a>
-                        {% else %}
-                        <a class="btn btn-secondary" href="{% url 'login' %}">Войти</a>
-                        {% endif %}                    
-                      </div>
-                        </form>
-                  
+</head>
+
+<body>
+
+  <!-- Панель навигации -->
+  <nav class="navbar navbar-expand-xl">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="{% url 'home' %}">
+        <img src="{% static 'main/icons/logo.png' %}" alt="Logo" title="Logo"> Отдых и точка
+      </a>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <form class="form-inline mr-auto mr-sl-2 mr-xs-none">
+              <div class="form-group">
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"> <i class="bi bi-search"></i> </span>
                   </div>
-                </nav>
+                  <input class="form-control mr-sm-2" type="search" placeholder="Поиск" aria-label="Поиск">
+                </div>
+              </div>
+            </form>
+          <li class="nav-item"> 
+            <a type="button" class="btn btn-light" data-toggle="modal" data-target="#exampleModal"> Субъекты </a>
 
-        <div class="album py-5 bg-light">
+            <!-- Модальное окно -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModal"
+              aria-hidden="true">
+              <div class="modal-dialog modal-dialog-scrollable" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModal">Выберите субъект</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <p> This is a test </p>
+                    <p> This is a test </p>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                  </div>
+                </div>
+              </div>
+            </div>
 
-            {% block content %}
-            {% endblock %}
+            <!-- Избранное -->
+            {% if request.user.is_authenticated %}
+          <li class="nav-item"> <a class="btn btn-light" href="{% url 'favorites' %}"> Избраннное </a>
+            {% endif %}
+        </ul>
+      </div>
+
+      <!-- Пользователь -->
+      <form class="form-inline ml-auto">
+        <div class="form-group">
+          <span class="input-group-text"> <i class="bi bi-person-fill"> {{request.user.username}}</i> </span>
+          {% if request.user.is_authenticated %}
+          <a class="btn btn-secondary" href="{% url 'logout' %}">Выйти</a>
+          {% else %}
+          <a class="btn btn-secondary" href="{% url 'login' %}">Войти</a>
+          {% endif %}
         </div>
-    </body>
+      </form>
+    </div>
+  </nav>
+
+  <div class="album py-5 bg-light">
+
+    {% block content %}
+    {% endblock %}
+  </div>
+
+</footer>
+
+</body>
+
 </html>
