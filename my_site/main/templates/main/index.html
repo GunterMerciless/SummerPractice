@@ -23,11 +23,11 @@
                   <p class="card-text"> {{album_elem.title}} </p>
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
-                      <a class="btn btn-sm btn-outline-secondary" href="{{album_elem.get_absolute_url}}">Просмотр</a>
+                      <a class="btn btn-sm btn-outline-secondary" href="{{album_elem.get_absolute_url}}"> <i class="bi bi-eye-fill"> </i></a>
                       {% if request.user.is_authenticated %}
                           <form action="" method="post">
                             {% csrf_token %}
-                            <button type="submit" class="btn btn-sm btn-outline-secondary" name="fav{{ album_elem.pk }}">Избр.</button>
+                            <button type="submit" class="btn btn-sm btn-outline-secondary" name="fav{{ album_elem.pk }}"> <i class="bi bi-bookmark-fill"></i> </button>
                           </form>
                       {% endif %}
                     </div>

@@ -31,13 +31,6 @@
 
 }
 
-
-/* .nav-item{
-  padding: .5rem;
-  font-style: italic;
-  color: black;
-} */
-
 .navbar img{
   max-height: 80px;
   max-width: 80px;
@@ -46,10 +39,15 @@
   min-width: 60px;
 }
 
+.nav-item { 
+  margin: 0 .3rem 0 .3rem 
+}
 
-.nav-item { margin: 0 .3rem 0 .3rem }
-
-
+.card-text {
+  text-align: left;
+  font-family: 'Open Sans', sans-serif;
+  white-space: pre-line;
+}
 
 .form-signin {
   max-width: 330px;
@@ -74,6 +72,7 @@
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
 }
+
 .form-signin input[type="password"] {
   margin-bottom: 10px;
   border-top-left-radius: 0;

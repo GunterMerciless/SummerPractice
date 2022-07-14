@@ -7,15 +7,14 @@
       <h3 class="mb-0">
         {{album_elem.title}}
       </h3>
+      {% if album_elem.photo %}
+      <img class="card-img-right d-flex d-md-block mt-3" alt="Can't show image :("
+        style="height: 300px; width: 337; display: block; object-fit: cover;" src="{{album_elem.photo.url}}">
+      {% endif %}
       <div class="mb-1 text-muted">{{album_elem.time_of_creation}}</div>
       <p class="card-text mb-auto">{{album_elem.content}}</p>
     </div>
-    {% if album_elem.photo %}
-        <img class="card-img-right d-flex d-md-block"
-             alt="Can't show image :("
-             style="height: 300px; width: 337; display: block; object-fit: cover;"
-             src="{{album_elem.photo.url}}">
-    {% endif %}
+
   </div>
 </div>
 {% endblock %}

@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 
 
 class AlbumElem(models.Model):  # реализация непосредственно с SQLite
-    photo = models.ImageField(upload_to='photos/%Y/%m/%d')
+    photo = models.ImageField(upload_to='photos/')
     title = models.TextField(max_length=255, default='Название города')
     content = models.TextField(blank=True)
     time_of_creation = models.DateTimeField(auto_now_add=True)

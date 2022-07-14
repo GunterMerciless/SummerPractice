@@ -1,8 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
-from .forms import *
-from django.http import HttpResponse
 
+from .forms import *
 from .models import *
 
 
